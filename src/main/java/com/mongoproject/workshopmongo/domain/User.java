@@ -3,6 +3,11 @@ package com.mongoproject.workshopmongo.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+// THE ANNOTATION ALREADY WORKS, BECAUSE
+// THE SEARCH IS 'toLowerCase(<Class Name>)'
+@Document(collection = "user")
 public class User implements Serializable{
 	/**
 	 * 
