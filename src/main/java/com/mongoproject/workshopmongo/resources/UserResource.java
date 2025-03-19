@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +47,14 @@ public class UserResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path
 				("/{id}").buildAndExpand(u.getId()).toUri();
 		/// RETURNS 201
+		/// TO TEST IT, MUST NOT INCLUDE BACKSLASH IN 'users' IN THE URL
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable String id){
+		us.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 }

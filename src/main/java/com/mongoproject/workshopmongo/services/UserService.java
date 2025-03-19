@@ -33,5 +33,10 @@ public class UserService {
 	public User fromDTO(UserDTO uDTO) {
 		return new User(uDTO.getId(),uDTO.getName(),uDTO.getEmail());
 	}
+	
+	public void delete(String id) {
+		findById(id);
+		ur.deleteById(id);
+	}
 
 }
