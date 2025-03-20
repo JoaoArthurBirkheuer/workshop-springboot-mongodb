@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.mongoproject.workshopmongo.domain.Post;
 import com.mongoproject.workshopmongo.domain.User;
 import com.mongoproject.workshopmongo.dto.AuthorDTO;
+import com.mongoproject.workshopmongo.dto.CommentDTO;
 import com.mongoproject.workshopmongo.repositories.PostRepository;
 import com.mongoproject.workshopmongo.repositories.UserRepository;
 
@@ -45,6 +46,14 @@ public class Instantiation implements CommandLineRunner{
 				"Cheguei","Cheguei em SP", new AuthorDTO(maria));
 		
 		// ur.saveAll(Arrays.asList(maria,alex,bob));
+		
+		// ADDING COMMENTS BEFORE SAVING POSTS
+		CommentDTO c1 = new CommentDTO("Boa viagem!", sdf.parse("20/03/2025"), new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Aproveite", sdf.parse("20/03/2025"), new AuthorDTO(bob));
+		CommentDTO c3 = new CommentDTO("Bom dia pra vc", sdf.parse("20/03/2025"), new AuthorDTO(alex));
+		
+		p1.getComments().addAll(Arrays.asList(c1,c2));
+		p2.getComments().addAll(Arrays.asList(c3));
 		
 		// WHAT GOES IN THE MONGO COMPASS IS A COPY, NOT A REFERENCE
 		pr.saveAll(Arrays.asList(p1,p2));
