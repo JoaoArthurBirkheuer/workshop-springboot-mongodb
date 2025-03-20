@@ -24,6 +24,7 @@ public class PostService {
 	/// ENCODE VALUE IN THE URL
 	/// CREATING UTILITARY CLASS
 	public List<Post> findByTitle(String title){
-		return pr.findByTitleContaining(title);
+		//return pr.findByTitleContaining(title); 
+		return pr.searchByTitle(title);
 	}
 }
