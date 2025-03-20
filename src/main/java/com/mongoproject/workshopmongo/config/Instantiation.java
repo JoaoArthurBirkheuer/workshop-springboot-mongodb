@@ -48,6 +48,10 @@ public class Instantiation implements CommandLineRunner{
 		
 		// WHAT GOES IN THE MONGO COMPASS IS A COPY, NOT A REFERENCE
 		pr.saveAll(Arrays.asList(p1,p2));
+		
+		maria.getPosts().addAll(Arrays.asList(p1,p2));
+		
+		ur.save(maria);
 	}
 	
 
